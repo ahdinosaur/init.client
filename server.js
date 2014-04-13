@@ -8,7 +8,7 @@ var app = connect()
   .use(require('morgan')())
   .use(require('compression')())
   .use(ecstatic({
-    root: __dirname + '/static',
+    root: __dirname,
     cache: (isProd ? 3600 : 0),
   }));
 
