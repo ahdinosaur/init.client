@@ -1,0 +1,63 @@
+{
+  "name": "{{ project }}",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "develop": "(export NODE_ENV=development; gulp develop & node server.js)",
+    "test": "(export NODE_ENV=test; testling)",
+    "start": "(export NODE_ENV=production; gulp && node server.js)",
+    "deploy": "(export NODE_ENV=production; git branch -D gh-pages; git checkout -b gh-pages; gulp && touch .nojekyll && git add . -f && git reset -- node_modules && git commit -m \"deploy\" && git push origin gh-pages --force; git checkout master)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/{{ user }}/{{ project }}.git"
+  },
+  "author": "ahdinosaur",
+  "license": "AGPLv3",
+  "bugs": {
+    "url": "https://github.com/{{ user }}/{{ project }}/issues"
+  },
+  "homepage": "https://github.com/{{ user }}/{{ project }}",
+  "browserify": {
+    "transform": [
+      "envify",
+      "lessify"
+    ]
+  },
+  "testling": {
+    "files": "test/**/*.js",
+    "harness": "mocha",
+    "browsers": [
+      "ie/9..latest",
+      "firefox/17..nightly",
+      "chrome/23..canary",
+      "opera/15..next",
+      "safari/6..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/4.2"
+    ]
+  },
+  "devDependencies": {
+    "watchify": "^0.6.1",
+    "tiny-lr": "0.0.5",
+    "gulp-livereload": "^1.2.0",
+    "chai": "~1.9.0",
+    "mocha": "~1.18.0",
+    "testling": "^1.6.1"
+  },
+  "dependencies": {
+    "ecstatic": "^0.4.13",
+    "envify": "^1.2.1",
+    "uglifyify": "^2.0.0",
+    "vinyl-source-stream": "^0.1.1",
+    "gulp": "^3.5.6",
+    "browserify": "^3.32.1",
+    "lessify": "git://github.com/ahdinosaur/lessify",
+    "morgan": "^1.0.0",
+    "compression": "^1.0.1",
+    "connect": "^2.14.4",
+    "semantic": "git://github.com/Semantic-Org/Semantic-UI#0.15.5"
+  }
+}
